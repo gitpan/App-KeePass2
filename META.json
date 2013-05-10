@@ -32,7 +32,10 @@
       },
       "runtime" : {
          "requires" : {
+            "Carp" : "0",
+            "Data::Printer" : "0",
             "File::KeePass" : "0",
+            "IO::Prompt" : "0",
             "Moo" : "0",
             "MooX::Options" : "0",
             "perl" : "5.006",
@@ -42,7 +45,6 @@
       },
       "test" : {
          "requires" : {
-            "Carp" : "0",
             "File::Find" : "0",
             "File::Temp" : "0",
             "Scalar::Util" : "0",
@@ -63,7 +65,7 @@
          "web" : "https://github.com/celogeek/App-KeePass2"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.016003"

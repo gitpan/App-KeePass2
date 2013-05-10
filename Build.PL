@@ -17,13 +17,16 @@ my %module_build_args = (
     "celogeek <me\@celogeek.com>"
   ],
   "dist_name" => "App-KeePass2",
-  "dist_version" => "0.01",
+  "dist_version" => "0.02",
   "license" => "perl",
   "module_name" => "App::KeePass2",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
+    "Carp" => 0,
+    "Data::Printer" => 0,
     "File::KeePass" => 0,
+    "IO::Prompt" => 0,
     "Moo" => 0,
     "MooX::Options" => 0,
     "perl" => "5.006",
@@ -34,7 +37,6 @@ my %module_build_args = (
     "bin/keepass2-cli"
   ],
   "test_requires" => {
-    "Carp" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
     "Scalar::Util" => 0,

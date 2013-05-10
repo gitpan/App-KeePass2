@@ -3,7 +3,6 @@ abstract: 'KeePass2 commandline tools'
 author:
   - 'celogeek <me@celogeek.com>'
 build_requires:
-  Carp: 0
   File::Find: 0
   File::Temp: 0
   Module::Build: 0.3601
@@ -20,7 +19,10 @@ meta-spec:
   version: 1.4
 name: App-KeePass2
 requires:
+  Carp: 0
+  Data::Printer: 0
   File::KeePass: 0
+  IO::Prompt: 0
   Moo: 0
   MooX::Options: 0
   perl: 5.006
@@ -30,7 +32,7 @@ resources:
   bugtracker: https://tasks.celogeek.com/projects/app-keepass2/issues
   homepage: https://tasks.celogeek.com/projects/app-keepass2
   repository: git://github.com/celogeek/App-KeePass2.git
-version: 0.01
+version: 0.02
 x_Dist_Zilla:
   perl:
     version: 5.016003

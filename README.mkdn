@@ -4,7 +4,7 @@ App::KeePass2 - KeePass2 commandline tools
 
 # VERSION
 
-version 0.01
+version 0.02
 
 # METHODS
 
