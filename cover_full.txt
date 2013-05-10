@@ -1,0 +1,106 @@
+---------------------------- ------ ------ ------ ------ ------ ------ ------
+File                           stmt   bran   cond    sub    pod   time  total
+---------------------------- ------ ------ ------ ------ ------ ------ ------
+blib/lib/App/KeePass2.pm       88.2    n/a    n/a   83.3  100.0  100.0   87.5
+Total                          88.2    n/a    n/a   83.3  100.0  100.0   87.5
+---------------------------- ------ ------ ------ ------ ------ ------ ------
+
+
+Run:          t/00-compile.t
+Perl version: 5.16.3
+OS:           linux
+Start:        Fri May 10 14:03:19 2013
+Finish:       Fri May 10 14:03:19 2013
+
+Run:          t/000-report-versions.t
+Perl version: 5.16.3
+OS:           linux
+Start:        Fri May 10 14:03:19 2013
+Finish:       Fri May 10 14:03:19 2013
+
+Run:          t/author-critic.t
+Perl version: 5.16.3
+OS:           linux
+Start:        Fri May 10 14:03:20 2013
+Finish:       Fri May 10 14:03:21 2013
+
+Run:          t/release-pod-coverage.t
+Perl version: 5.16.3
+OS:           linux
+Start:        Fri May 10 14:03:22 2013
+Finish:       Fri May 10 14:03:22 2013
+
+Run:          t/release-unused-vars.t
+Perl version: 5.16.3
+OS:           linux
+Start:        Fri May 10 14:03:22 2013
+Finish:       Fri May 10 14:03:23 2013
+
+Run:          t/release-unused-vars.t
+Perl version: 5.16.3
+OS:           linux
+Start:        Fri May 10 14:03:22 2013
+Finish:       Fri May 10 14:03:22 2013
+
+blib/lib/App/KeePass2.pm
+
+line  err   stmt   bran   cond    sub    pod   time   code
+1                                                     #
+2                                                     # This file is part of App-KeePass2
+3                                                     #
+4                                                     # This software is copyright (c) 2013 by celogeek <me@celogeek.com>.
+5                                                     #
+6                                                     # This is free software; you can redistribute it and/or modify it under
+7                                                     # the same terms as the Perl 5 programming language system itself.
+8                                                     #
+9                                                     package App::KeePass2;
+10                                                    
+11                                                    # ABSTRACT: KeePass2 commandline tools
+12                                                    
+13             2                    2        156153   use strict;
+               2                                  3   
+               2                                 74   
+14             2                    2             4   use warnings;
+               2                                  2   
+               2                                 84   
+15                                                    our $VERSION = '0.01';    # VERSION
+16             2                    2           438   use Moo;
+               2                              14367   
+               2                                 27   
+17             2                    2          2092   use MooX::Options;
+               2                               1077   
+               2                                 28   
+18             2                    2        120618   use File::KeePass;
+               2                              20778   
+               2                                 75   
+19                                                    
+20                                                    sub run {
+21    ***      0                    0      1              my ($self) = @_;
+22                                                    
+23    ***      0                                          return;
+24                                                    }
+25                                                    
+26                                                    1;
+27                                                    
+28                                                    __END__
+
+
+Covered Subroutines
+-------------------
+
+Subroutine Count Pod Location                   
+---------- ----- --- ---------------------------
+BEGIN          2     blib/lib/App/KeePass2.pm:13
+BEGIN          2     blib/lib/App/KeePass2.pm:14
+BEGIN          2     blib/lib/App/KeePass2.pm:16
+BEGIN          2     blib/lib/App/KeePass2.pm:17
+BEGIN          2     blib/lib/App/KeePass2.pm:18
+
+Uncovered Subroutines
+---------------------
+
+Subroutine Count Pod Location                   
+---------- ----- --- ---------------------------
+run            0   1 blib/lib/App/KeePass2.pm:21
+
+
