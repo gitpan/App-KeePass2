@@ -39,6 +39,7 @@
             "Moo" : "0",
             "Moo::Role" : "0",
             "MooX::Options" : "0",
+            "feature" : "0",
             "perl" : "5.010",
             "strict" : "0",
             "utf8::all" : "0",
@@ -67,7 +68,7 @@
          "web" : "https://github.com/celogeek/App-KeePass2"
       }
    },
-   "version" : "0.03",
+   "version" : "0.04",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.016003"

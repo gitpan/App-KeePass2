@@ -13,7 +13,7 @@ package App::KeePass2;
 use strict;
 use warnings;
 
-our $VERSION = '0.03';    # VERSION
+our $VERSION = '0.04';    # VERSION
 use utf8::all;
 use Moo;
 with 'App::KeePass2::Icons';
@@ -22,6 +22,7 @@ use File::KeePass;
 use IO::Prompt;
 use Carp;
 use Data::Printer;
+use feature 'say';
 
 option 'file' => (
     doc      => 'Your keepass2 file',
@@ -38,7 +39,7 @@ option 'create' => (
 );
 
 option 'dump_groups' => (
-    doc   => 'Dump the groups of a keepass2 file',
+    doc   => 'Dump the groups',
     is    => 'ro',
     short => 'd',
 );
@@ -50,9 +51,16 @@ has _fkp => (
     }
 );
 
+option 'list_groups' => (
+    doc   => 'List the groups',
+    is    => 'ro',
+    short => 'l',
+);
+
 sub run {
     my ($self) = @_;
     $self->_create,      return if ( $self->create );
+    $self->_list_groups, return if ( $self->list_groups );
     $self->_dump_groups, return if ( $self->dump_groups );
     return;
 }
@@ -110,6 +118,22 @@ sub _dump_groups {
     p( $self->_fkp->groups );
     return;
 }
+
+sub _list_groups {
+    my ($self) = @_;
+    $self->_fkp->load_db( $self->file, $self->_get_master_key );
+    $self->_display_groups( $self->_fkp->groups, 0 );
+}
+
+sub _display_groups {
+    my ( $self, $groups, $level ) = @_;
+    for my $group (@$groups) {
+        my $key  = $self->get_icon_key_from_id( $group->{icon} );
+        my $icon = $self->get_icon_char_from_key($key);
+        say sprintf( "%s%-3s%s", "    " x $level, $icon, $group->{title} );
+        $self->_display_groups( $group->{groups}, $level + 1 );
+    }
+}
 1;
 
 __END__
@@ -122,7 +146,7 @@ App::KeePass2 - KeePass2 commandline tools
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 ATTRIBUTES
 
@@ -137,6 +161,10 @@ Create the keepass2 file
 =head2 dump_groups
 
 Dump the content of the groups
+
+=head2 list_groups
+
+List the groups with icon
 
 =head1 METHODS
 

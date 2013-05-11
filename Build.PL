@@ -17,7 +17,7 @@ my %module_build_args = (
     "celogeek <me\@celogeek.com>"
   ],
   "dist_name" => "App-KeePass2",
-  "dist_version" => "0.03",
+  "dist_version" => "0.04",
   "license" => "perl",
   "module_name" => "App::KeePass2",
   "recommends" => {},
@@ -30,6 +30,7 @@ my %module_build_args = (
     "Moo" => 0,
     "Moo::Role" => 0,
     "MooX::Options" => 0,
+    "feature" => 0,
     "perl" => "5.010",
     "strict" => 0,
     "utf8::all" => 0,

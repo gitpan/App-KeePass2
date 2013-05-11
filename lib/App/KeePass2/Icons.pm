@@ -12,7 +12,7 @@ package App::KeePass2::Icons;
 use strict;
 use warnings;
 
-our $VERSION = '0.03';    # VERSION
+our $VERSION = '0.04';    # VERSION
 use utf8::all;
 use Moo::Role;
 
@@ -132,7 +132,7 @@ App::KeePass2::Icons - Built in icon pack from app KeePass2
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 METHODS
 
