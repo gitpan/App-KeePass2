@@ -12,8 +12,11 @@ package App::KeePass2;
 
 use strict;
 use warnings;
-our $VERSION = '0.02';    # VERSION
+
+our $VERSION = '0.03';    # VERSION
+use utf8::all;
 use Moo;
+with 'App::KeePass2::Icons';
 use MooX::Options;
 use File::KeePass;
 use IO::Prompt;
@@ -34,8 +37,8 @@ option 'create' => (
     short => 'c',
 );
 
-option 'dump' => (
-    doc   => 'Dump a keepass2 file',
+option 'dump_groups' => (
+    doc   => 'Dump the groups of a keepass2 file',
     is    => 'ro',
     short => 'd',
 );
@@ -49,8 +52,8 @@ has _fkp => (
 
 sub run {
     my ($self) = @_;
-    $self->_create, return if ( $self->create );
-    $self->_dump,   return if ( $self->dump );
+    $self->_create,      return if ( $self->create );
+    $self->_dump_groups, return if ( $self->dump_groups );
     return;
 }
 
@@ -66,15 +69,32 @@ sub _get_confirm_key {
 
 sub _create {
     my ($self) = @_;
+    croak "The file already exists !" if -f $self->file;
     $self->_fkp->clear;
-    my $root
-        = $self->_fkp->add_group( { title => 'My Passwords', icon => 52 } );
+    my $root = $self->_fkp->add_group(
+        {   title => 'My Passwords',
+            icon  => $self->get_icon_id_from_key('key')
+        }
+    );
     my $gid = $root->{'id'};
     $self->_fkp->add_group(
-        { title => 'Internet', group => $gid, icon => 1 } );
+        {   title => 'Internet',
+            group => $gid,
+            icon  => $self->get_icon_id_from_key('internet')
+        }
+    );
     $self->_fkp->add_group(
-        { title => 'Private', group => $gid, icon => 58 } );
-    $self->_fkp->add_group( { title => 'Bank', group => $gid, icon => 66 } );
+        {   title => 'Private',
+            group => $gid,
+            icon  => $self->get_icon_id_from_key('key5')
+        }
+    );
+    $self->_fkp->add_group(
+        {   title => 'Bank',
+            group => $gid,
+            icon  => $self->get_icon_id_from_key('dollar')
+        }
+    );
     $self->_fkp->unlock if $self->_fkp->is_locked;
     my $master  = $self->_get_master_key;
     my $confirm = $self->_get_confirm_key;
@@ -84,7 +104,7 @@ sub _create {
     return;
 }
 
-sub _dump {
+sub _dump_groups {
     my ($self) = @_;
     $self->_fkp->load_db( $self->file, $self->_get_master_key );
     p( $self->_fkp->groups );
@@ -102,7 +122,21 @@ App::KeePass2 - KeePass2 commandline tools
 
 =head1 VERSION
 
-version 0.02
+version 0.03
+
+=head1 ATTRIBUTES
+
+=head2 file
+
+The password file
+
+=head2 create
+
+Create the keepass2 file
+
+=head2 dump_groups
+
+Dump the content of the groups
 
 =head1 METHODS
 

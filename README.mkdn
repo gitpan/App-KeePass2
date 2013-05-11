@@ -4,7 +4,21 @@ App::KeePass2 - KeePass2 commandline tools
 
 # VERSION
 
-version 0.02
+version 0.03
+
+# ATTRIBUTES
+
+## file
+
+The password file
+
+## create
+
+Create the keepass2 file
+
+## dump\_groups
+
+Dump the content of the groups
 
 # METHODS
 
